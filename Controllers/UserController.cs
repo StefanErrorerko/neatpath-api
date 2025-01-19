@@ -142,7 +142,7 @@ namespace NeatPath.Controllers
 
         [HttpPut("{userId}/change-password")]
         [ProducesResponseType(200, Type = typeof(UserResponseDto))]
-        [ProducesResponseType(403)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [ProducesResponseType(400)]
         public IActionResult ChangeUserPassword(int userId, [FromBody] UserChangePasswordDto userUpdateDto)
@@ -171,7 +171,7 @@ namespace NeatPath.Controllers
 
         [HttpPost("{userId}/verify-password")]
         [ProducesResponseType(200, Type = typeof(UserResponseDto))]
-        [ProducesResponseType(403)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [ProducesResponseType(400)]
         public IActionResult VerifyUserPassword(int userId, [FromBody] UserVerifyPasswordDto userDto)

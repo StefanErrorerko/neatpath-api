@@ -21,7 +21,7 @@ namespace NeatPath.Controllers
 
         [HttpPost("login")]
         [ProducesResponseType(200)]
-        [ProducesResponseType(403)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [ProducesResponseType(409)]
         [ProducesResponseType(400)]
@@ -39,13 +39,16 @@ namespace NeatPath.Controllers
                 return Unauthorized("Invalid password");
 
             var token = _tokenGenerator.GenerateToken();
-
-            var sessionCreated = _sessionRepository.CreateSession(_mapper.Map<Session>(new SessionCreateDto()
+            var sessionToCreate = _mapper.Map<Session>(new SessionCreateDto()
             {
                 Token = token,
                 UserId = user.Id,
+                // default expiration time - 1h
                 ExpiresAt = DateTime.UtcNow.AddHours(1)
-            }));
+            });
+            sessionToCreate.User = user;
+
+            var sessionCreated = _sessionRepository.CreateSession(sessionToCreate);
 
             if (!sessionCreated)
             {
@@ -61,7 +64,7 @@ namespace NeatPath.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return Ok(session);
+            return Ok(_mapper.Map<SessionResponseDto>(session));
         }
 
         [HttpPost("register")]
@@ -85,13 +88,16 @@ namespace NeatPath.Controllers
             }
 
             var token = _tokenGenerator.GenerateToken();
-
-            var sessionCreated = _sessionRepository.CreateSession(_mapper.Map<Session>(new SessionCreateDto()
+            var sessionToCreate = _mapper.Map<Session>(new SessionCreateDto()
             {
                 Token = token,
                 UserId = user.Id,
+                // default expiration time - 1h
                 ExpiresAt = DateTime.UtcNow.AddHours(1)
-            }));
+            });
+            sessionToCreate.User = user;
+
+            var sessionCreated = _sessionRepository.CreateSession(sessionToCreate);
 
             if (!sessionCreated)
             {
@@ -107,7 +113,7 @@ namespace NeatPath.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return Ok(session);
+            return Ok(_mapper.Map<SessionResponseDto>(session));
         }
     }
 }

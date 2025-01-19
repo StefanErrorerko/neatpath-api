@@ -10,7 +10,7 @@ namespace NeatPath.Controllers
 {
     [Route("api/v1/[controller]")]
     [Controller]
-    public class SessionController(ISessionRepository sessionRepository, IUserRepository userRepository, ITokenGenerator tokenGenerator IMapper mapper) : Controller
+    public class SessionController(ISessionRepository sessionRepository, IUserRepository userRepository, ITokenGenerator tokenGenerator, IMapper mapper) : Controller
     {
         private readonly ISessionRepository _sessionRepository = sessionRepository;
         private readonly IUserRepository _userRepository = userRepository;
