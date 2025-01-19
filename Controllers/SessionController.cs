@@ -43,7 +43,7 @@ namespace NeatPath.Controllers
                 return BadRequest(ModelState);
 
             var userId = sessionCreateDto.UserId;
-            if (_userRepository.UserExists(userId))
+            if (!_userRepository.UserExists(userId))
                 return NotFound();
 
             // single session for user?
@@ -85,7 +85,7 @@ namespace NeatPath.Controllers
         [ProducesResponseType(404)]
         public IActionResult DeleteSession(int sessionId)
         {
-            if (_sessionRepository.SessionExists(sessionId))
+            if (!_sessionRepository.SessionExists(sessionId))
                 return NotFound();
 
             var sessionToDel = _sessionRepository.GetSession(sessionId);

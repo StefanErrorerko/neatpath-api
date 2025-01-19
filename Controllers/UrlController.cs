@@ -62,7 +62,7 @@ namespace NeatPath.Controllers
                 return BadRequest(ModelState);
 
             var userId = urlCreateDto.UserId;
-            if (_userRepository.UserExists(userId))
+            if (!_userRepository.UserExists(userId))
                 return NotFound();
 
             if (_urlRepository.GetUrlByOriginalUrl(urlCreateDto.OriginalUrl) != null){
@@ -115,7 +115,7 @@ namespace NeatPath.Controllers
             if (urlClicksDto == null || !ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (_urlRepository.UrlExists(urlId))
+            if (!_urlRepository.UrlExists(urlId))
                 return NotFound();
 
             var urlToUpd = _urlRepository.GetUrl(urlId);

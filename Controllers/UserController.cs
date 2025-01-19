@@ -42,7 +42,7 @@ namespace NeatPath.Controllers
         [ProducesResponseType(200, Type = typeof(IEnumerable<SessionResponseDto>))]
         public IActionResult GetUserSessions(int userId)
         {
-            if (_userRepository.UserExists(userId))
+            if (!_userRepository.UserExists(userId))
                 return NotFound();
 
             var sessions = _userRepository.GetUserSessions(userId);
@@ -55,7 +55,7 @@ namespace NeatPath.Controllers
         [ProducesResponseType(200, Type = typeof(IEnumerable<UrlResponseDto>))]
         public IActionResult GetUserUrls(int userId)
         {
-            if (_userRepository.UserExists(userId))
+            if (!_userRepository.UserExists(userId))
                 return NotFound();
 
             var urls = _userRepository.GetUserUrls(userId);
@@ -180,7 +180,7 @@ namespace NeatPath.Controllers
         [ProducesResponseType(404)]
         public IActionResult DeleteUser(int userId)
         {
-            if (_userRepository.UserExists(userId))
+            if (!_userRepository.UserExists(userId))
                 return NotFound();
 
             var userToDel = _userRepository.GetUser(userId);
