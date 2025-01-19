@@ -6,7 +6,6 @@ namespace NeatPath.Dto.Request
     public class SessionExpiringDateDto
     {
         [Required]
-        [FutureDate]
         public DateTime ExpiresAt { get; set; }
     }
 }
