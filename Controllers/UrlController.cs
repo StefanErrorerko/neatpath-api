@@ -69,7 +69,7 @@ namespace NeatPath.Controllers
             if (user.Role == Models.Enums.UserRole.Anonymous)
             {
                 ModelState.AddModelError("", "Anonymous user cannot create urls");
-                StatusCode(422, ModelState);
+                return StatusCode(422, ModelState);
             }
 
             if (_urlRepository.GetUrlByOriginalUrl(urlCreateDto.OriginalUrl) != null){
@@ -89,14 +89,14 @@ namespace NeatPath.Controllers
             if(hashAttempt == 3 && _urlRepository.GetUrlByHash(hash) != null)
             {
                 ModelState.AddModelError("", $"Cannot hash {urlCreateDto.OriginalUrl}");
-                StatusCode(500, ModelState);
+                return StatusCode(500, ModelState);
             }
 
             // if cannot get serviceUrl from env variables
             if (String.IsNullOrEmpty(_redirectUrl))
             {
                 ModelState.AddModelError("", $"Cannot get serviceUrl");
-                StatusCode(500, ModelState);
+                return StatusCode(500, ModelState);
             }
 
             var urlMapped = _mapper.Map<Url>(urlCreateDto);
