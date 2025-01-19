@@ -51,7 +51,7 @@ namespace NeatPath.Controllers
             var sessionMapped = _mapper.Map<Session>(sessionCreateDto);
             sessionMapped.User = _userRepository.GetUser(userId);
 
-            if (_sessionRepository.CreateSession(sessionMapped))
+            if (!_sessionRepository.CreateSession(sessionMapped))
             {
                 ModelState.AddModelError("", $"Something went wrong while creating session for user with Id {userId}");
                 return StatusCode(500, ModelState);
@@ -63,7 +63,7 @@ namespace NeatPath.Controllers
         [HttpPut("{sessionId}/expiring-date")]
         [ProducesResponseType(200, Type = typeof(SessionResponseDto))]
         [ProducesResponseType(404)]
-        public IActionResult UpdateExpringDate(int sessionId, [FromBody] SessionExpiringDateDto sessionUpdateDto)
+        public IActionResult UpdateExpirationDate(int sessionId, [FromBody] SessionExpiringDateDto sessionUpdateDto)
         {
             if(sessionUpdateDto == null || sessionUpdateDto.ExpiresAt == DateTime.MinValue || !ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -74,7 +74,10 @@ namespace NeatPath.Controllers
             var session = _sessionRepository.GetSession(sessionId);
             session.ExpiresAt = sessionUpdateDto.ExpiresAt;
 
-            _sessionRepository.UpdateSession(session);
+            if(!_sessionRepository.UpdateSession(session)){
+                ModelState.AddModelError("", $"Something went wrong while updating expiration date for session with id: {sessionId}");
+                return StatusCode(500, ModelState);
+            }
 
             return Ok(_mapper.Map<SessionResponseDto>(session));
         }
