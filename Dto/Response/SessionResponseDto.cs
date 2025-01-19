@@ -8,6 +8,6 @@ namespace NeatPath.Dto.Response
         public string Token { get; set; }
         public DateTime ExpiresAt { get; set; }
         public DateTime CreatedAt { get; set; }
-        public User User { get; set; }
+        public UserShortResponseDto User { get; set; }
     }
 }

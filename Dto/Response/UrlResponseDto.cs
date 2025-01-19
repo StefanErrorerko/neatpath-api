@@ -9,6 +9,6 @@ namespace NeatPath.Dto.Response
         public string ShortUrl { get; set; }
         public string Hash { get; set; }
         public DateTime CreatedAt { get; set; }
-        public User User { get; set; }
+        public UserShortResponseDto User { get; set; }
     }
 }

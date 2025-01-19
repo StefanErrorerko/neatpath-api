@@ -12,6 +12,7 @@ namespace NeatPath.Helper
         {
 
             CreateMap<User, UserResponseDto>();
+            CreateMap<User, UserShortResponseDto>();
             CreateMap<UserCreateDto, User>();
             CreateMap<UserUpdateDto, User>();
             CreateMap<UserChangePasswordDto, User>();

@@ -1,4 +1,5 @@
-﻿using NeatPath.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using NeatPath.Data;
 using NeatPath.Interfaces;
 using NeatPath.Models;
 
@@ -13,24 +14,27 @@ namespace NeatPath.Repository
         }
         public Session GetSession(int id)
         {
-            return _context.Sessions.Where(s => s.Id == id).FirstOrDefault();
+            return _context.Sessions
+                .Where(s => s.Id == id)
+                .Include(s => s.User)
+                .FirstOrDefault();
         }
-
         public ICollection<Session> GetSessions()
         {
-            return _context.Sessions.OrderBy(s => s.Id).ToList();
+            return _context.Sessions
+                .Include(s => s.User)
+                .OrderBy(s => s.Id)
+                .ToList();
         }
         public bool SessionExists(int id)
         {
             return _context.Sessions.Any(s => s.Id == id);
         }
-
         public bool CreateSession(Session session)
         {
             _context.Add(session);
             return Save();
         }
-
         public bool UpdateSession(Session session)
         {
             _context.Update(session);
