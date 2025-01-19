@@ -66,7 +66,7 @@ namespace NeatPath.Controllers
             if(sessionUpdateDto == null || sessionUpdateDto.ExpiresAt == DateTime.MinValue || !ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (_sessionRepository.SessionExists(sessionId))
+            if (!_sessionRepository.SessionExists(sessionId))
                 return NotFound();
 
             var session = _sessionRepository.GetSession(sessionId);
