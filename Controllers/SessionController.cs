@@ -4,16 +4,18 @@ using NeatPath.Dto.Request;
 using NeatPath.Dto.Response;
 using NeatPath.Interfaces;
 using NeatPath.Models;
+using System.Security.Cryptography;
 
 namespace NeatPath.Controllers
 {
     [Route("api/v1/[controller]")]
     [Controller]
-    public class SessionController(ISessionRepository sessionRepository, IUserRepository userRepository, IMapper mapper) : Controller
+    public class SessionController(ISessionRepository sessionRepository, IUserRepository userRepository, ITokenGenerator tokenGenerator IMapper mapper) : Controller
     {
         private readonly ISessionRepository _sessionRepository = sessionRepository;
         private readonly IUserRepository _userRepository = userRepository;
         private readonly IMapper _mapper = mapper;
+        private readonly ITokenGenerator _tokenGenerator = tokenGenerator;
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<SessionResponseDto>))]
@@ -48,12 +50,14 @@ namespace NeatPath.Controllers
 
             var sessionMapped = _mapper.Map<Session>(sessionCreateDto);
             sessionMapped.User = _userRepository.GetUser(userId);
+            
+            sessionMapped.Token = sessionCreateDto.Token ?? _tokenGenerator.GenerateToken();
 
             // check if there is one more session with the same active(!) token.
-            var sessionDuplicate = _sessionRepository.GetSessionByToken(sessionCreateDto.Token);
+            var sessionDuplicate = _sessionRepository.GetSessionByToken(sessionMapped.Token);
             if (sessionDuplicate != null && !_sessionRepository.SessionExpired(sessionDuplicate.Id))
             {
-                ModelState.AddModelError("", $"Session with token {sessionCreateDto.Token} is already created");
+                ModelState.AddModelError("", $"Session with token {sessionMapped.Token} is already created");
                 return StatusCode(422, ModelState);
             }
 

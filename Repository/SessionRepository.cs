@@ -24,7 +24,8 @@ namespace NeatPath.Repository
         {
             return _context.Sessions
                 .Include(s => s.User)
-                .OrderBy(s => s.Id)
+                .OrderByDescending(s => s.ExpiresAt)
+                .ThenByDescending(s => s.CreatedAt)
                 .ToList();
         }
         public Session GetSessionByToken(string token)

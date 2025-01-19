@@ -18,6 +18,11 @@ namespace NeatPath.Repository
         {
             return _context.Users.Where(u => u.Id == id).FirstOrDefault();
         }
+        public User GetUserByUsername(string username)
+        {
+            return _context.Users.Where(u => u.Username == username).FirstOrDefault();
+
+        }
         public ICollection<User> GetUsers()
         {
             return _context.Users.OrderBy(u => u.Id).ToList();

@@ -37,7 +37,7 @@ namespace NeatPath.Repository
         public ICollection<Url> GetUrls()
         {
             return _context.Urls
-                .OrderBy(url => url.Id)
+                .OrderByDescending(url => url.CreatedAt)
                 .Include(url => url.User)
                 .ToList();
         }

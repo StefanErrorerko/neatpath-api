@@ -6,6 +6,7 @@ namespace NeatPath.Interfaces
     {
         ICollection<User> GetUsers();
         User GetUser(int id);
+        User GetUserByUsername(string username);
         bool UserExists(int id);
         bool UpdateUser(User user);
         bool CreateUser(User user);

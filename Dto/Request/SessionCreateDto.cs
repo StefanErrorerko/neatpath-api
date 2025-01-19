@@ -7,7 +7,7 @@ namespace NeatPath.Dto.Request
     public class SessionCreateDto
     {
         [Required]
-        public string Token { get; set; }
+        public string? Token { get; set; }
 
         [Required]
         [FutureDate]
