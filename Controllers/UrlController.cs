@@ -65,6 +65,13 @@ namespace NeatPath.Controllers
             if (!_userRepository.UserExists(userId))
                 return NotFound();
 
+            var user = _userRepository.GetUser(userId);
+            if (user.Role == Models.Enums.UserRole.Anonymous)
+            {
+                ModelState.AddModelError("", "Anonymous user cannot create urls");
+                StatusCode(422, ModelState);
+            }
+
             if (_urlRepository.GetUrlByOriginalUrl(urlCreateDto.OriginalUrl) != null){
                 ModelState.AddModelError("", $"Cannot shorten {urlCreateDto.OriginalUrl} twice.");
                 return StatusCode(422, ModelState);
@@ -105,7 +112,6 @@ namespace NeatPath.Controllers
 
             return Ok(_mapper.Map<UrlResponseDto>(urlMapped));
         }
-
 
         [HttpPut("{urlId}/add-click")]
         [ProducesResponseType(200)]
