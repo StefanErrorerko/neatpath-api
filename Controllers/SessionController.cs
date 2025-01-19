@@ -46,10 +46,16 @@ namespace NeatPath.Controllers
             if (!_userRepository.UserExists(userId))
                 return NotFound();
 
-            // single session for user?
-
             var sessionMapped = _mapper.Map<Session>(sessionCreateDto);
             sessionMapped.User = _userRepository.GetUser(userId);
+
+            // check if there is one more session with the same active(!) token.
+            var sessionDuplicate = _sessionRepository.GetSessionByToken(sessionCreateDto.Token);
+            if (sessionDuplicate != null && !_sessionRepository.SessionExpired(sessionDuplicate.Id))
+            {
+                ModelState.AddModelError("", $"Session with token {sessionCreateDto.Token} is already created");
+                return StatusCode(422, ModelState);
+            }
 
             if (!_sessionRepository.CreateSession(sessionMapped))
             {

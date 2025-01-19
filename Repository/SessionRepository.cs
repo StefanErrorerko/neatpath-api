@@ -2,6 +2,7 @@
 using NeatPath.Data;
 using NeatPath.Interfaces;
 using NeatPath.Models;
+using Newtonsoft.Json.Linq;
 
 namespace NeatPath.Repository
 {
@@ -25,6 +26,25 @@ namespace NeatPath.Repository
                 .Include(s => s.User)
                 .OrderBy(s => s.Id)
                 .ToList();
+        }
+        public Session GetSessionByToken(string token)
+        {
+            return _context.Sessions
+                .Where(s => s.Token == token)
+                .Include(s => s.User)
+                .FirstOrDefault();
+        }
+        public bool SessionExpired(int sessionId)
+        {
+            var session = _context.Sessions
+                .Where(s => s.Id == sessionId)
+                .Include(s => s.User)
+                .FirstOrDefault();
+
+            if (session == null)
+                return true;
+
+            return session.ExpiresAt <= DateTime.UtcNow;
         }
         public bool SessionExists(int id)
         {
@@ -50,5 +70,6 @@ namespace NeatPath.Repository
             var saved = _context.SaveChanges();
             return saved > 0;
         }
+
     }
 }
