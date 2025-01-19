@@ -142,7 +142,7 @@ namespace NeatPath.Controllers
             return Ok(_mapper.Map<UserResponseDto>(userToUpd));
         }
 
-        [HttpPut("{userId}/change-pass")]
+        [HttpPut("{userId}/change-password")]
         [ProducesResponseType(400)]
         [ProducesResponseType(200, Type = typeof(UserResponseDto))]
         [ProducesResponseType(404)]
@@ -156,7 +156,7 @@ namespace NeatPath.Controllers
 
             var userToUpd = _userRepository.GetUser(userId);
 
-            if(_passwordService.VerifyPassword(userUpdateDto.CurrentPassword, userToUpd.PasswordHash))
+            if(!_passwordService.VerifyPassword(userUpdateDto.CurrentPassword, userToUpd.PasswordHash))
             {
                 ModelState.AddModelError("", "Given password does not match with current password");
                 return StatusCode(400, ModelState);
@@ -171,6 +171,32 @@ namespace NeatPath.Controllers
             }
 
             return Ok(_mapper.Map<UserResponseDto>(userToUpd));
+        }
+
+        [HttpPost("{userId}/verify-password")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(200, Type = typeof(UserResponseDto))]
+        [ProducesResponseType(404)]
+        public IActionResult VerifyUserPassword(int userId, [FromBody] UserVerifyPasswordDto userDto)
+        {
+            if (userDto == null || !ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (!_userRepository.UserExists(userId))
+                return NotFound();
+
+            var user = _userRepository.GetUser(userId);
+            if (user.PasswordHash == null)
+            {
+                ModelState.AddModelError("", "User does not has password");
+                return StatusCode(400, ModelState);
+            }
+            if (!_passwordService.VerifyPassword(userDto.Password, user.PasswordHash))
+            {
+                ModelState.AddModelError("", "Password does not match");
+                return StatusCode(400, ModelState);
+            }
+            return Ok("Password matches");
         }
 
         [HttpDelete("{userId}")]
