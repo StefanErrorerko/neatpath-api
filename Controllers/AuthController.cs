@@ -21,7 +21,9 @@ namespace NeatPath.Controllers
 
         [HttpPost("login")]
         [ProducesResponseType(200)]
+        [ProducesResponseType(403)]
         [ProducesResponseType(404)]
+        [ProducesResponseType(409)]
         [ProducesResponseType(400)]
         public IActionResult LoginUser([FromBody] UserLoginDto userDto)
         {
@@ -66,6 +68,7 @@ namespace NeatPath.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(409)]
         public IActionResult RegisterUser([FromBody] UserCreateDto userDto)
         {
             if (!ModelState.IsValid)

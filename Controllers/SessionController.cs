@@ -39,6 +39,7 @@ namespace NeatPath.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(409)]
         public IActionResult CreateSession([FromBody] SessionCreateDto sessionCreateDto)
         {
             if (sessionCreateDto == null || !ModelState.IsValid)
@@ -56,10 +57,7 @@ namespace NeatPath.Controllers
             // check if there is one more session with the same active(!) token.
             var sessionDuplicate = _sessionRepository.GetSessionByToken(sessionMapped.Token);
             if (sessionDuplicate != null && !_sessionRepository.SessionExpired(sessionDuplicate.Id))
-            {
-                ModelState.AddModelError("", $"Session with token {sessionMapped.Token} is already created");
-                return StatusCode(422, ModelState);
-            }
+                return Conflict($"Session with token {sessionMapped.Token} is already exists");
 
             if (!_sessionRepository.CreateSession(sessionMapped))
             {

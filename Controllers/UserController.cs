@@ -68,6 +68,7 @@ namespace NeatPath.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(409)]
         public IActionResult CreateUser([FromBody] UserCreateDto userCreateDto)
         {
             if (userCreateDto == null)
@@ -81,10 +82,7 @@ namespace NeatPath.Controllers
                 .FirstOrDefault();
 
             if(userDuplicate != null)
-            {
-                ModelState.AddModelError("", $"User {userCreateDto.Username} is already exists");
-                return StatusCode(422, ModelState);
-            }
+                return Conflict($"User {userCreateDto.Username} is already exists");
 
             var userMap = _mapper.Map<User>(userCreateDto);
             userMap.PasswordHash = _passwordService.HashPassword(userCreateDto.Password);
@@ -143,9 +141,10 @@ namespace NeatPath.Controllers
         }
 
         [HttpPut("{userId}/change-password")]
-        [ProducesResponseType(400)]
         [ProducesResponseType(200, Type = typeof(UserResponseDto))]
+        [ProducesResponseType(403)]
         [ProducesResponseType(404)]
+        [ProducesResponseType(400)]
         public IActionResult ChangeUserPassword(int userId, [FromBody] UserChangePasswordDto userUpdateDto)
         {
             if (userUpdateDto == null || !ModelState.IsValid)
@@ -157,10 +156,7 @@ namespace NeatPath.Controllers
             var userToUpd = _userRepository.GetUser(userId);
 
             if(!_passwordService.VerifyPassword(userUpdateDto.CurrentPassword, userToUpd.PasswordHash))
-            {
-                ModelState.AddModelError("", "Given password does not match with current password");
-                return StatusCode(400, ModelState);
-            }
+                return Unauthorized("Given password does not match with current password");
 
             userToUpd.PasswordHash = _passwordService.HashPassword(userUpdateDto.NewPassword);
 
@@ -174,9 +170,10 @@ namespace NeatPath.Controllers
         }
 
         [HttpPost("{userId}/verify-password")]
-        [ProducesResponseType(400)]
         [ProducesResponseType(200, Type = typeof(UserResponseDto))]
+        [ProducesResponseType(403)]
         [ProducesResponseType(404)]
+        [ProducesResponseType(400)]
         public IActionResult VerifyUserPassword(int userId, [FromBody] UserVerifyPasswordDto userDto)
         {
             if (userDto == null || !ModelState.IsValid)
@@ -188,14 +185,12 @@ namespace NeatPath.Controllers
             var user = _userRepository.GetUser(userId);
             if (user.PasswordHash == null)
             {
-                ModelState.AddModelError("", "User does not has password");
+                ModelState.AddModelError("", $"User with id ${userId} does not has password");
                 return StatusCode(400, ModelState);
             }
             if (!_passwordService.VerifyPassword(userDto.Password, user.PasswordHash))
-            {
-                ModelState.AddModelError("", "Password does not match");
-                return StatusCode(400, ModelState);
-            }
+                return Unauthorized("Password does not match");
+            
             return Ok("Password matches");
         }
 
