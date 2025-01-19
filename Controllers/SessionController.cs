@@ -7,6 +7,8 @@ using NeatPath.Models;
 
 namespace NeatPath.Controllers
 {
+    [Route("api/v1/[controller]")]
+    [Controller]
     public class SessionController(ISessionRepository sessionRepository, IUserRepository userRepository, IMapper mapper) : Controller
     {
         private readonly ISessionRepository _sessionRepository = sessionRepository;
