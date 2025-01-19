@@ -20,12 +20,12 @@ namespace NeatPath.Controllers
         private readonly ITokenGenerator _tokenGenerator = tokenGenerator;
 
         [HttpPost("login")]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(200, Type = typeof(SessionResponseDto))]
         [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [ProducesResponseType(409)]
         [ProducesResponseType(400)]
-        public IActionResult LoginUser([FromBody] UserLoginDto userDto)
+        public IActionResult Login([FromBody] UserLoginDto userDto)
         {
             if (userDto == null || !ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -68,11 +68,11 @@ namespace NeatPath.Controllers
         }
 
         [HttpPost("register")]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(200, Type = typeof(SessionResponseDto))]
         [ProducesResponseType(404)]
         [ProducesResponseType(400)]
         [ProducesResponseType(409)]
-        public IActionResult RegisterUser([FromBody] UserCreateDto userDto)
+        public IActionResult Register([FromBody] UserCreateDto userDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -114,6 +114,28 @@ namespace NeatPath.Controllers
             }
 
             return Ok(_mapper.Map<SessionResponseDto>(session));
+        }
+
+        [HttpPost("logout")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(400)]
+        public IActionResult Logout([FromBody] SessionTokenDto sessionDto)
+        {
+            if (sessionDto == null || !ModelState.IsValid)
+                return BadRequest(ModelState);
+            
+            var sessionToDel = _sessionRepository.GetSessionByToken(sessionDto.Token);
+            if (sessionToDel == null)
+                return NotFound();
+
+            if (!_sessionRepository.DeleteSession(sessionToDel))
+            {
+                ModelState.AddModelError("", $"Something went wrong while deleting session with id: {sessionToDel.Id}");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
         }
     }
 }
