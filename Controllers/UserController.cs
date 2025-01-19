@@ -124,7 +124,6 @@ namespace NeatPath.Controllers
                 ModelState.AddModelError("", "Cannot apply password for anonymous user or change password within this method");
                 return StatusCode(400, ModelState);
             }
-                
 
             // since user is no longer anonymous, we can apply password 
             if (userUpdateDto.Password != null)
