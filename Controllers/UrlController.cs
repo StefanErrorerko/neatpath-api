@@ -29,12 +29,12 @@ namespace NeatPath.Controllers
         [HttpGet("{urlId}")]
         [ProducesResponseType(200, Type = typeof(UrlResponseDto))]
         [ProducesResponseType(400)]
-        public IActionResult GetUrl(int urlid)
+        public IActionResult GetUrl(int urlId)
         {
-            if (!_urlRepository.UrlExists(urlid))
+            if (!_urlRepository.UrlExists(urlId))
                 return NotFound();
 
-            var url = _mapper.Map<UrlResponseDto>(_urlRepository.GetUrl(urlid));
+            var url = _mapper.Map<UrlResponseDto>(_urlRepository.GetUrl(urlId));
             return Ok(url);
         }
 
