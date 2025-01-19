@@ -1,0 +1,6 @@
+@NeatPath_HostAddress = http://localhost:5022
+
+GET {{NeatPath_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
