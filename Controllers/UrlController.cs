@@ -54,7 +54,9 @@ namespace NeatPath.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(201)]
+        [ProducesResponseType(200, Type = typeof(UrlResponseDto))]
+        [ProducesResponseType(403)]
+        [ProducesResponseType(409)]
         [ProducesResponseType(400)]
         public IActionResult CreateUrl([FromBody] UrlCreateDto urlCreateDto)
         {
@@ -67,15 +69,10 @@ namespace NeatPath.Controllers
 
             var user = _userRepository.GetUser(userId);
             if (user.Role == Models.Enums.UserRole.Anonymous)
-            {
-                ModelState.AddModelError("", "Anonymous user cannot create urls");
-                return StatusCode(422, ModelState);
-            }
+                return Forbid("Anonymous user cannot create urls");
 
-            if (_urlRepository.GetUrlByOriginalUrl(urlCreateDto.OriginalUrl) != null){
-                ModelState.AddModelError("", $"Cannot shorten {urlCreateDto.OriginalUrl} twice.");
-                return StatusCode(422, ModelState);
-            }
+            if (_urlRepository.GetUrlByOriginalUrl(urlCreateDto.OriginalUrl) != null)
+                return Conflict($"Cannot shorten {urlCreateDto.OriginalUrl} twice.");
 
             // get hash, if collision, try 2 times more. if 3 times error, returns error
             string hash;

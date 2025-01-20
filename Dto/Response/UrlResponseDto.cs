@@ -8,6 +8,7 @@ namespace NeatPath.Dto.Response
         public string OriginalUrl { get; set; }
         public string ShortUrl { get; set; }
         public string Hash { get; set; }
+        public int ClickCount { get; set; }
         public DateTime CreatedAt { get; set; }
         public UserShortResponseDto User { get; set; }
     }
