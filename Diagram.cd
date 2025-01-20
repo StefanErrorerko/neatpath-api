@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NeatPath.Dto.Request.SessionCreateDto" Collapsed="true">
+    <Position X="18" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Dto\Request\SessionCreateDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Request.SessionExpiringDateDto" Collapsed="true">
+    <Position X="18" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Request\SessionExpiringDateDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Request.SessionTokenDto" Collapsed="true">
+    <Position X="18" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Dto\Request\SessionTokenDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Request.UrlClicksDto" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Request\UrlClicksDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Request.UrlCreateDto" Collapsed="true">
+    <Position X="13.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Request\UrlCreateDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Request.UserChangePasswordDto" Collapsed="true">
+    <Position X="15.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Dto\Request\UserChangePasswordDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Request.UserCreateDto" Collapsed="true">
+    <Position X="15.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Request\UserCreateDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Request.UserLoginDto" Collapsed="true">
+    <Position X="15.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Request\UserLoginDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Request.UserUpdateDto" Collapsed="true">
+    <Position X="15.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Request\UserUpdateDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Request.UserVerifyPasswordDto" Collapsed="true">
+    <Position X="15.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Request\UserVerifyPasswordDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Response.SessionResponseDto" Collapsed="true">
+    <Position X="18" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAACAAAAEAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Dto\Response\SessionResponseDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Response.UrlResponseDto" Collapsed="true">
+    <Position X="13.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAIAAAAAACAAAACAEAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Response\UrlResponseDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Response.UserResponseDto" Collapsed="true">
+    <Position X="15.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAESAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Response\UserResponseDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Dto.Response.UserShortResponseDto" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAESAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Response\UserShortResponseDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Helper.MappingProfiles" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\MappingProfiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Helpers.PasswordService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\PasswordService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeatPath.Helpers.TokenGenerator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\TokenGenerator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeatPath.Helpers.UrlService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAABAAAAAAAAAAACAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Helpers\UrlService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeatPath.Models.Session" BaseTypeListCollapsed="true">
+    <Position X="18" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAACAAAACAAAAEAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Models\Session.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeatPath.Models.Url" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAIACAAAACAAAACAEAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Url.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeatPath.Models.User" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAACEAAESAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Role" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeatPath.Controllers.AuthController" Collapsed="true">
+    <Position X="4.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAgAAAAAAAAAAABAAIAAAADAAAABAAQAAAAAAA=</HashCode>
+      <FileName>Controllers\AuthController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Controllers.SessionController" Collapsed="true">
+    <Position X="10.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAgAAAAABAABAABAAQAAAACAQACAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\SessionController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_mapper" />
+      <Field Name="_sessionRepository" />
+      <Field Name="_userRepository" />
+      <Field Name="_tokenGenerator" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NeatPath.Controllers.UrlController" Collapsed="true">
+    <Position X="6.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAoAgAAAAAABAAAABAAAAAAAAAAIAABAAAAACACA=</HashCode>
+      <FileName>Controllers\UrlController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_userRepository" />
+      <Field Name="_urlService" />
+      <Field Name="_mapper" />
+      <Field Name="_urlRepository" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NeatPath.Controllers.UserController" Collapsed="true">
+    <Position X="8.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAAAAgAQAAAAAEAAgBAAAAAQAAAAAANAAEAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_userRepository" />
+      <Field Name="_passwordService" />
+      <Field Name="_mapper" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NeatPath.Data.DataContext" Collapsed="true">
+    <Position X="21" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAACAAAAAAAEAAACAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\DataContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Attributes.FutureDateAttribute" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\FutureDateAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeatPath.Repository.SessionRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAABBAACQEAAAQAAAAAARACAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\SessionRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeatPath.Repository.UrlRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAoAAAAAABABgAAAAAAAgAAAAAAIAABAAAAAAAAA=</HashCode>
+      <FileName>Repository\UrlRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeatPath.Repository.UserRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAAIAAAQAABQAEAAAAAAAAARAAAAAAEAAEAAAAAAA=</HashCode>
+      <FileName>Repository\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="NeatPath.Interfaces.IPasswordService" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPasswordService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NeatPath.Interfaces.ISessionRepository" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAABAACQEAAAQAAAAAARACAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISessionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NeatPath.Interfaces.ITokenGenerator" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ITokenGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NeatPath.Interfaces.IUrlRepository" Collapsed="true">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAoAAAAAAAABgAAAAAAAgAAAAAAIAABAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IUrlRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NeatPath.Interfaces.IUrlService" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Interfaces\IUrlService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NeatPath.Interfaces.IUserRepository" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAAIAAAQAAAQAEAAAAAAAAARAAAAAAEAAEAAAAAAA=</HashCode>
+      <FileName>Interfaces\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NeatPath.Models.Interfaces.ITrackable" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\ITrackable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AutoMapper.IMapper" Collapsed="true">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="NeatPath.Models.Enums.UserRole" Collapsed="true">
+    <Position X="16.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enums\CodeFile.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
